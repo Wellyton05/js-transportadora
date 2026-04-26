@@ -1,0 +1,94 @@
+---
+// FleetSection.astro — Frota: 2 Ducatos
+import { Image } from 'astro:assets';
+import ducato1 from '../assets/ducato-1.jpeg';
+import ducato2 from '../assets/ducato-2.jpeg';
+
+const vehicles = [
+  {
+    name: 'Fiat Ducato',
+    unit: 'Veículo 01',
+    spec: 'DUCATO MÁXI LONG 2.3 T.ALTO ME DISEL',
+    image: ducato1,
+  },
+  {
+    name: 'Fiat Ducato',
+    unit: 'Veículo 02',
+    spec: 'DUCATO MÁXI LONG 2.3 T.ALTO ME DISEL',
+    image: ducato2,
+  },
+];
+---
+
+<section id="fleet" class="relative py-24 lg:py-32 bg-white overflow-hidden">
+  <!-- Decorative top line -->
+  <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-silver-300 to-transparent"></div>
+  
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <div class="mb-16 reveal">
+      <div class="inline-flex items-center gap-2 mb-4">
+        <div class="w-10 h-[2px] bg-accent"></div>
+        <span class="text-accent font-semibold text-sm uppercase tracking-widest">Nossa Frota</span>
+      </div>
+      <h2 class="section-title">
+        Agilidade e segurança<br />
+        <span class="text-accent">na medida certa</span>
+      </h2>
+      <p class="section-subtitle">
+        Nossa frota de Ducatos é ideal para entregas ágeis com a segurança que sua carga merece.
+      </p>
+    </div>
+
+    <!-- Fleet Grid — 2 Ducatos -->
+    <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      {vehicles.map((vehicle, index) => (
+        <div class={`reveal delay-${(index + 1) * 200}`}>
+          <div class="bg-silver-50 border border-silver-200 rounded-sm overflow-hidden hover:border-accent/40 transition-all duration-500 group">
+            <!-- Vehicle Image -->
+            <div class="relative h-56 bg-navy overflow-hidden">
+              <Image 
+                src={vehicle.image} 
+                alt={`${vehicle.name} - ${vehicle.unit}`}
+                class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                quality="high"
+              />
+              
+              <!-- Gradient overlay for text readability -->
+              <div class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/20 to-transparent"></div>
+
+              <!-- Unit Badge -->
+              <div class="absolute top-4 right-4 bg-accent text-white font-bold text-xs px-3 py-1.5 rounded-sm uppercase tracking-wider z-10 shadow-sm">
+                {vehicle.unit}
+              </div>
+              <div class="absolute bottom-4 left-4 z-10">
+                <span class="text-white font-bold text-xl drop-shadow-md">{vehicle.name}</span>
+                <span class="block text-silver-300 text-sm drop-shadow-md">Van de Carga</span>
+              </div>
+            </div>
+
+            <!-- Info area -->
+            <div class="p-6">
+              <p class="text-gray-500 text-sm leading-relaxed mb-4">
+                Veículo ideal para entregas ágeis, oferecendo versatilidade para rotas urbanas e regionais com máxima segurança para sua carga.
+              </p>
+              
+              <div class="space-y-3">
+                <div class="bg-white border border-silver-200 rounded-sm p-3">
+                  <span class="text-[10px] font-medium text-silver-400 uppercase tracking-widest block">Especificação</span>
+                  <span class="text-navy font-bold text-sm">{vehicle.spec}</span>
+                </div>
+                <div class="bg-white border border-silver-200 rounded-sm p-3">
+                  <span class="text-[10px] font-medium text-silver-400 uppercase tracking-widest block">Capacidade</span>
+                  <span class="text-accent font-bold text-sm">Carga máxima: 1.5 toneladas</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+
+  </div>
+</section>

@@ -1,0 +1,65 @@
+---
+// ServicesSection.astro — Seção de serviços (conteúdo em desenvolvimento)
+---
+
+<section id="services" class="relative py-24 lg:py-32 bg-silver-50 overflow-hidden">
+  <!-- Decorative -->
+  <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-silver-300 to-transparent"></div>
+  <div class="absolute inset-0 bg-diagonal-lines opacity-30"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <div class="text-center mb-16 reveal">
+      <div class="inline-flex items-center gap-2 mb-4">
+        <div class="w-10 h-[2px] bg-accent"></div>
+        <span class="text-accent font-semibold text-sm uppercase tracking-widest">Nossos Serviços</span>
+        <div class="w-10 h-[2px] bg-accent"></div>
+      </div>
+      <h2 class="section-title text-center">
+        Soluções em transporte<br />para cada necessidade
+      </h2>
+      <p class="section-subtitle mx-auto text-center">
+        Oferecemos diferentes modalidades de transporte para atender a demanda do seu negócio com segurança e agilidade.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto">
+      <!-- Card 1: Carga Dedicada / Fechada -->
+      <div class="card-industrial p-8 flex flex-col items-center text-center reveal delay-100">
+        <div class="w-14 h-14 rounded-sm flex items-center justify-center mb-6 bg-navy/5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-navy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1" y="3" width="15" height="13"></rect>
+            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+            <circle cx="5.5" cy="18.5" r="2.5"></circle>
+            <circle cx="18.5" cy="18.5" r="2.5"></circle>
+          </svg>
+        </div>
+        <div class="w-full h-px bg-silver-200 mb-6"></div>
+        <div class="flex-1 flex flex-col items-center py-4">
+          <h3 class="text-lg font-bold text-navy mb-3">Carga Dedicada / Fechada</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">
+            Veículo exclusivo para a sua mercadoria, garantindo máxima agilidade e segurança do ponto de coleta até o destino final, sem paradas intermediárias.
+          </p>
+        </div>
+      </div>
+
+      <!-- Card 2: Complementos -->
+      <div class="card-industrial p-8 flex flex-col items-center text-center reveal delay-200">
+        <div class="w-14 h-14 rounded-sm flex items-center justify-center mb-6 bg-navy/5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-navy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="w-full h-px bg-silver-200 mb-6"></div>
+        <div class="flex-1 flex flex-col items-center py-4">
+          <h3 class="text-lg font-bold text-navy mb-3">Complementos</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">
+            A solução ideal para envios menores que não exigem um veículo exclusivo. Aproveitamos os espaços disponíveis para um transporte eficiente e com excelente custo-benefício.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

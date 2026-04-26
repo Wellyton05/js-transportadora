@@ -1,0 +1,255 @@
+@import "tailwindcss";
+
+/* ========================================
+   J.S TRANSPORTADORA — Design Tokens (Tailwind v4)
+   ======================================== */
+
+@theme {
+  /* Brand Colors */
+  --color-navy-50: #E6EDF5;
+  --color-navy-100: #CCDAEB;
+  --color-navy-200: #99B5D7;
+  --color-navy-300: #6690C3;
+  --color-navy-400: #336BAF;
+  --color-navy: #002D5C;
+  --color-navy-500: #002D5C;
+  --color-navy-600: #00244A;
+  --color-navy-700: #001A3A;
+  --color-navy-800: #001229;
+  --color-navy-900: #000A18;
+
+  --color-silver-50: #F4F6F8;
+  --color-silver-100: #E8EAED;
+  --color-silver-200: #D4D6D9;
+  --color-silver: #C0C0C0;
+  --color-silver-300: #C0C0C0;
+  --color-silver-400: #A0A0A0;
+  --color-silver-500: #808080;
+
+  --color-accent: #CC2936;
+  --color-accent-light: #E54B56;
+  --color-accent-dark: #A3212B;
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Animations */
+  --animate-fade-in: fadeIn 0.8s ease-out forwards;
+  --animate-slide-up: slideUp 0.8s ease-out forwards;
+  --animate-slide-right: slideRight 0.8s ease-out forwards;
+  --animate-pulse-slow: pulse 3s ease-in-out infinite;
+  --animate-float: float 3s ease-in-out infinite;
+
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideRight {
+    0% { opacity: 0; transform: translateX(-40px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+}
+
+/* ========================================
+   Base Styles
+   ======================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white text-gray-800 antialiased font-sans;
+  overflow-x: hidden;
+}
+
+::selection {
+  @apply bg-accent text-white;
+}
+
+/* ========================================
+   Component Styles
+   ======================================== */
+
+/* === Diagonal Section Dividers === */
+.diagonal-top {
+  clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
+}
+
+.diagonal-top-sm {
+  clip-path: polygon(0 4%, 100% 0, 100% 100%, 0 100%);
+}
+
+.diagonal-bottom {
+  clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+}
+
+.diagonal-both {
+  clip-path: polygon(0 6%, 100% 0, 100% 94%, 0 100%);
+}
+
+/* === Decorative Silver Lines === */
+.line-accent {
+  @apply relative;
+}
+
+.line-accent::before {
+  content: '';
+  @apply absolute top-0 left-0 w-16 h-[2px] bg-accent;
+}
+
+/* === Background Patterns === */
+.bg-diagonal-lines {
+  background-image: repeating-linear-gradient(
+    135deg,
+    transparent,
+    transparent 10px,
+    rgba(192, 192, 192, 0.1) 10px,
+    rgba(192, 192, 192, 0.1) 11px
+  );
+}
+
+.bg-hero-gradient {
+  background: linear-gradient(135deg, #002D5C 0%, #001A3A 50%, #002D5C 100%);
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(192,192,192,0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(192,192,192,0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* === Industrial Card Style === */
+.card-industrial {
+  @apply relative bg-white rounded-sm border border-silver-200 overflow-hidden
+         transition-all duration-300;
+}
+
+.card-industrial:hover {
+  @apply shadow-xl border-accent -translate-y-1;
+}
+
+.card-industrial::before {
+  content: '';
+  @apply absolute top-0 left-0 w-full h-1;
+  background: linear-gradient(to right, var(--color-navy), var(--color-navy-600));
+  transition: background 0.3s;
+}
+
+.card-industrial:hover::before {
+  background: linear-gradient(to right, var(--color-accent), var(--color-accent-dark));
+}
+
+/* === Button Styles === */
+.btn-primary {
+  @apply inline-flex items-center gap-2 px-8 py-4 bg-accent text-white font-bold
+         rounded-sm text-base uppercase tracking-wider
+         transition-all duration-300 cursor-pointer;
+}
+
+.btn-primary:hover {
+  @apply bg-accent-light shadow-lg -translate-y-0.5;
+}
+
+.btn-primary:active {
+  @apply translate-y-0;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center gap-2 px-6 py-3 border-2 border-white text-white font-semibold
+         rounded-sm text-sm uppercase tracking-wider
+         transition-all duration-300 cursor-pointer;
+}
+
+.btn-secondary:hover {
+  @apply bg-white text-navy;
+}
+
+.btn-whatsapp {
+  @apply inline-flex items-center gap-2 px-6 py-3 font-semibold
+         rounded-sm text-sm uppercase tracking-wider
+         transition-all duration-300 cursor-pointer;
+  background-color: #25D366;
+  color: white;
+}
+
+.btn-whatsapp:hover {
+  background-color: #20BD5A;
+  @apply shadow-lg -translate-y-0.5;
+}
+
+.btn-track {
+  @apply inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-white font-bold
+         rounded-sm text-xs uppercase tracking-widest
+         transition-all duration-300 cursor-pointer;
+}
+
+.btn-track:hover {
+  @apply bg-accent-light shadow-md;
+}
+
+/* === Section Titles === */
+.section-title {
+  @apply text-3xl md:text-4xl font-bold text-navy mb-4 leading-tight;
+}
+
+.section-subtitle {
+  @apply text-silver-500 text-lg mb-12 max-w-2xl;
+}
+
+/* ========================================
+   Scroll Animation Utilities
+   ======================================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* === Delay Utilities === */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }

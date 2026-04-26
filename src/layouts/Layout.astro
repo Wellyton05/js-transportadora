@@ -1,0 +1,117 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'J.S Transportadora | Transporte de Cargas em Itajaí-SC',
+  description = 'J.S Transportadora: transporte de cargas fracionadas, fechadas e urgentes em Itajaí, Balneário Camboriú e Navegantes. Segurança, agilidade e rastreio em tempo real. Solicite seu orçamento!',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="pt-BR" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- SEO Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content="transportadora itajaí, transporte de cargas, carga fracionada, carga fechada, transporte urgente, Balneário Camboriú, Navegantes, frete Santa Catarina, rastreio de carga" />
+    <meta name="author" content="J.S Transportadora" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="pt-BR" />
+    <meta name="geo.region" content="BR-SC" />
+    <meta name="geo.placename" content="Itajaí" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="J.S Transportadora" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "J.S Transportadora",
+      "description": description,
+      "url": "https://jstransportadora.com.br",
+      "telephone": ["+5547988602569", "+5547997848201"],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua Hercílio Luz, 1200 - Sala 03",
+        "addressLocality": "Itajaí",
+        "addressRegion": "SC",
+        "postalCode": "88301-000",
+        "addressCountry": "BR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -26.9101,
+        "longitude": -48.6707
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Itajaí" },
+        { "@type": "City", "name": "Balneário Camboriú" },
+        { "@type": "City", "name": "Navegantes" }
+      ],
+      "serviceType": ["Transporte de Carga Fracionada", "Transporte de Carga Fechada", "Transporte Urgente"],
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "08:00",
+        "closes": "18:00"
+      },
+      "priceRange": "$$"
+    })} />
+
+  </head>
+  <body class="bg-white text-gray-800 font-sans">
+    <slot />
+
+    <!-- Scroll Reveal Script -->
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+      );
+
+      document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach((el) => {
+        observer.observe(el);
+      });
+    </script>
+  </body>
+</html>

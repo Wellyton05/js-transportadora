@@ -1,0 +1,83 @@
+---
+// AboutSection.astro — A Empresa: confiança e atendimento familiar
+import { Image } from 'astro:assets';
+import logoMini from '../assets/imagemJS.png';
+---
+
+<section id="about" class="relative py-24 lg:py-32 bg-white overflow-hidden">
+  <!-- Decorative Elements -->
+  <div class="absolute top-0 right-0 w-1/3 h-full bg-silver-50/50 hidden lg:block" style="clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);"></div>
+  <div class="absolute top-12 left-8 w-px h-24 bg-gradient-to-b from-accent to-transparent hidden lg:block"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <!-- Text Column -->
+      <div class="space-y-6 reveal-left">
+        <div class="inline-flex items-center gap-2">
+          <div class="w-10 h-[2px] bg-accent"></div>
+          <span class="text-accent font-semibold text-sm uppercase tracking-widest">Sobre Nós</span>
+        </div>
+
+        <h2 class="section-title">
+          Mais que uma transportadora,<br />
+          <span class="text-accent">uma parceira</span> do seu negócio.
+        </h2>
+
+        <div class="space-y-4 text-gray-600 leading-relaxed">
+          <p class="text-lg">
+            A <strong class="text-navy font-semibold">J.S Transportadora</strong> nasceu do compromisso de oferecer um transporte de cargas com a atenção e o cuidado que só um atendimento familiar pode proporcionar.
+          </p>
+          <p>
+            Sediados em <strong class="text-navy">Itajaí, Santa Catarina</strong>, estamos estrategicamente posicionados em uma das regiões logísticas mais importantes do Brasil. Cada entrega é tratada como prioridade, com comunicação direta e a certeza de que sua carga chegará segura ao destino.
+          </p>
+          <p>
+            Nossa equipe é movida pela confiança dos nossos clientes. Não trabalhamos com burocracia excessiva — trabalhamos com resultados. Ligue, fale conosco pelo WhatsApp, e resolva seu frete de maneira rápida e descomplicada.
+          </p>
+        </div>
+      </div>
+
+      <!-- Visual Column -->
+      <div class="relative reveal-right">
+        <div class="relative">
+          <!-- Main visual block -->
+          <div class="bg-gradient-to-br from-navy to-navy-700 rounded-sm p-8 lg:p-12 relative overflow-hidden">
+            <div class="bg-diagonal-lines absolute inset-0 opacity-20"></div>
+            <div class="relative z-10 space-y-6">
+              <div class="flex items-center gap-4">
+                <div class="h-16 flex items-center justify-center overflow-hidden">
+                  <Image 
+                    src={logoMini} 
+                    alt="Iniciais J.S Transportadora" 
+                    class="h-full w-auto object-contain"
+                    quality="max"
+                  />
+                </div>
+                <div>
+                  <span class="text-white font-bold text-lg block">J.S Transportadora</span>
+                  <span class="text-silver-300 text-sm">Itajaí — SC</span>
+                </div>
+              </div>
+              <div class="h-px bg-white/10"></div>
+              <p class="text-silver-300 text-sm leading-relaxed">
+                Frota própria de Ducatos para entregas ágeis e seguras na região do Vale do Itajaí e litoral catarinense. Atendimento familiar, sem burocracia.
+              </p>
+              <div class="flex gap-4 pt-2">
+                <a
+                  href="https://wa.me/5547988602569"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn-track"
+                >
+                  Fale Conosco
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Decorative offset element -->
+          <div class="absolute -bottom-4 -right-4 w-full h-full border-2 border-accent/20 rounded-sm -z-10"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

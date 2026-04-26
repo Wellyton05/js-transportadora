@@ -1,0 +1,138 @@
+---
+// Header.astro — Sticky header with navigation
+import { Image } from 'astro:assets';
+import logoMini from '../assets/imagemJS.png';
+---
+
+<header id="header" class="fixed top-0 left-0 w-full z-50 bg-navy shadow-lg transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo Navbar -->
+      <a href="#home" class="flex items-center shrink-0 group" id="header-logo">
+        <Image 
+          src={logoMini} 
+          alt="Iniciais J.S Transportadora" 
+          class="h-[35px] md:h-[45px] w-auto object-contain transition-transform duration-300 group-hover:scale-105" 
+          loading="eager"
+          quality="max" 
+        />
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-1" id="desktop-nav">
+        <a href="#about" class="nav-link px-4 py-2 text-sm font-medium text-silver-200 hover:text-white transition-colors relative group">
+          A Empresa
+          <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="#services" class="nav-link px-4 py-2 text-sm font-medium text-silver-200 hover:text-white transition-colors relative group">
+          Serviços
+          <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="#fleet" class="nav-link px-4 py-2 text-sm font-medium text-silver-200 hover:text-white transition-colors relative group">
+          Frota
+          <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="#coverage" class="nav-link px-4 py-2 text-sm font-medium text-silver-200 hover:text-white transition-colors relative group">
+          Atuação
+          <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="#contact" class="nav-link px-4 py-2 text-sm font-medium text-silver-200 hover:text-white transition-colors relative group">
+          Contato
+          <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <div class="w-px h-6 bg-silver-400/30 mx-2"></div>
+        <a
+          href="https://wa.me/5547988602569"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-track"
+          id="header-track-btn"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          Rastrear Carga
+        </a>
+      </nav>
+
+      <!-- Mobile menu button -->
+      <button id="mobile-menu-btn" class="lg:hidden flex flex-col gap-1.5 p-2" aria-label="Abrir menu">
+        <span class="block w-6 h-0.5 bg-white transition-all duration-300 origin-center" id="bar1"></span>
+        <span class="block w-6 h-0.5 bg-white transition-all duration-300" id="bar2"></span>
+        <span class="block w-4 h-0.5 bg-white transition-all duration-300 origin-center" id="bar3"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="lg:hidden hidden bg-navy-700/98 backdrop-blur-xl border-t border-silver-400/10">
+    <nav class="max-w-7xl mx-auto px-4 py-6 flex flex-col gap-1">
+      <a href="#about" class="mobile-nav-link px-4 py-3 text-silver-200 hover:text-white hover:bg-white/5 rounded-sm font-medium transition-colors">A Empresa</a>
+      <a href="#services" class="mobile-nav-link px-4 py-3 text-silver-200 hover:text-white hover:bg-white/5 rounded-sm font-medium transition-colors">Serviços</a>
+      <a href="#fleet" class="mobile-nav-link px-4 py-3 text-silver-200 hover:text-white hover:bg-white/5 rounded-sm font-medium transition-colors">Frota</a>
+      <a href="#coverage" class="mobile-nav-link px-4 py-3 text-silver-200 hover:text-white hover:bg-white/5 rounded-sm font-medium transition-colors">Atuação</a>
+      <a href="#contact" class="mobile-nav-link px-4 py-3 text-silver-200 hover:text-white hover:bg-white/5 rounded-sm font-medium transition-colors">Contato</a>
+      <div class="h-px bg-silver-400/20 my-3"></div>
+      <a
+        href="https://wa.me/5547988602569"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-track justify-center"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        Rastrear Carga
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  // Sticky header background on scroll
+  const header = document.getElementById('header');
+  const scrollHandler = () => {
+    if (window.scrollY > 50) {
+      header?.classList.add('bg-navy-700/95', 'backdrop-blur-xl', 'shadow-2xl');
+    } else {
+      header?.classList.remove('bg-navy-700/95', 'backdrop-blur-xl', 'shadow-2xl');
+    }
+  };
+  window.addEventListener('scroll', scrollHandler);
+  scrollHandler();
+
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const bar1 = document.getElementById('bar1');
+  const bar2 = document.getElementById('bar2');
+  const bar3 = document.getElementById('bar3');
+  let menuOpen = false;
+
+  menuBtn?.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    mobileMenu?.classList.toggle('hidden');
+    if (menuOpen) {
+      bar1?.classList.add('rotate-45', 'translate-y-[4px]');
+      bar2?.classList.add('opacity-0');
+      bar3?.classList.add('-rotate-45', '-translate-y-[4px]', 'w-6');
+    } else {
+      bar1?.classList.remove('rotate-45', 'translate-y-[4px]');
+      bar2?.classList.remove('opacity-0');
+      bar3?.classList.remove('-rotate-45', '-translate-y-[4px]', 'w-6');
+    }
+  });
+
+  // Close menu on link click
+  document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+      menuOpen = false;
+      bar1?.classList.remove('rotate-45', 'translate-y-[4px]');
+      bar2?.classList.remove('opacity-0');
+      bar3?.classList.remove('-rotate-45', '-translate-y-[4px]', 'w-6');
+    });
+  });
+</script>
