@@ -5,17 +5,17 @@ export default {
     extend: {
       colors: {
         navy: {
-          DEFAULT: '#002D5C',
-          50: '#E6EDF5',
-          100: '#CCDAEB',
-          200: '#99B5D7',
-          300: '#6690C3',
-          400: '#336BAF',
-          500: '#002D5C',
-          600: '#00244A',
-          700: '#001A3A',
-          800: '#001229',
-          900: '#000A18',
+          DEFAULT: '#030d6a',
+          50: '#e6e7f0',
+          100: '#cccedf',
+          200: '#999dbe',
+          300: '#666b9e',
+          400: '#333a7d',
+          500: '#030d6a',
+          600: '#020a55',
+          700: '#020840',
+          800: '#01052b',
+          900: '#010315',
         },
         silver: {
           DEFAULT: '#C0C0C0',
@@ -27,9 +27,9 @@ export default {
           500: '#808080',
         },
         accent: {
-          DEFAULT: '#E30613',
-          light: '#FF4D58',
-          dark: '#A6040E',
+          DEFAULT: '#a10000',
+          light: '#d43333',
+          dark: '#7a0000',
         },
       },
       fontFamily: {
@@ -38,7 +38,7 @@ export default {
       },
       backgroundImage: {
         'diagonal-lines': "repeating-linear-gradient(135deg, transparent, transparent 10px, rgba(192,192,192,0.1) 10px, rgba(192,192,192,0.1) 11px)",
-        'hero-gradient': 'linear-gradient(135deg, #002D5C 0%, #001A3A 50%, #002D5C 100%)',
+        'hero-gradient': 'linear-gradient(135deg, #030d6a 0%, #01052b 50%, #030d6a 100%)',
       },
       animation: {
         'fade-in': 'fadeIn 0.8s ease-out forwards',
