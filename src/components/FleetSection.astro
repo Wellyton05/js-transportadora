@@ -20,6 +20,7 @@ const vehicles = [
     spec: 'DUCATO MÁXI LONG 2.3 T.ALTO DIESEL - 3 PALLETS',
     capacity: 'Carga máxima: 1.5 toneladas',
     description: 'Veículo ideal para entregas ágeis, oferecendo versatilidade para rotas urbanas e regionais com máxima segurança para sua carga.',
+    imagePosition: 'center center',
     images: [ducato1Front, ducato1Rear, ducato1Box],
   },
   {
@@ -29,6 +30,7 @@ const vehicles = [
     spec: 'DUCATO MÁXI LONG 2.3 T.ALTO DIESEL - 3 PALLETS',
     capacity: 'Carga máxima: 1.5 toneladas',
     description: 'Veículo ideal para entregas ágeis, oferecendo versatilidade para rotas urbanas e regionais com máxima segurança para sua carga.',
+    imagePosition: 'center center',
     images: [ducato2Front, ducato2Rear, ducato2Box],
   },
   {
@@ -38,15 +40,15 @@ const vehicles = [
     spec: 'FIORINO FURGÃO 1.4 EVO FLEX 8V - CARGA URBANA',
     capacity: 'Carga máxima: 680 kg',
     description: 'Ideal para entregas urbanas rápidas e locais de difícil acesso, com agilidade, economia e praticidade no dia a dia.',
+    imagePosition: 'center 70%',
     images: [fiorino1, fiorino2],
   },
 ];
 ---
 
 <section id="fleet" class="relative py-24 lg:py-32 bg-white overflow-hidden">
-  <!-- Decorative top line -->
   <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-silver-300 to-transparent"></div>
-  
+
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Header -->
     <div class="mb-16 reveal">
@@ -63,59 +65,75 @@ const vehicles = [
       </p>
     </div>
 
-    <!-- Fleet Grid — 2 Ducatos + 1 Fiorino -->
+    <!-- Fleet Grid -->
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {vehicles.map((vehicle, index) => (
-        <div class={`reveal delay-${(index + 1) * 200}`}>
-          <div class="bg-silver-50 border border-silver-200 rounded-sm overflow-hidden hover:border-accent/40 transition-all duration-500 group">
-            <!-- Vehicle Images Carousel -->
-            <div class="relative h-56 bg-navy overflow-hidden group">
-              <!-- Scroll Container -->
-              <div class="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar h-full w-full" style="scrollbar-width: none; -ms-overflow-style: none;">
+      {vehicles.map((vehicle, vIndex) => (
+        <div class={`reveal delay-${(vIndex + 1) * 200}`}>
+          <div class="bg-silver-50 border border-silver-200 rounded-sm overflow-hidden hover:border-accent/40 transition-all duration-500">
+
+            <!-- Carousel -->
+            <div class="relative h-56 bg-navy overflow-hidden group" data-carousel>
+
+              <!-- Scroll container -->
+              <div class="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar h-full w-full" data-scroll>
                 {vehicle.images.map((img, i) => (
-                  <div class="min-w-full h-full flex-shrink-0 snap-center relative cursor-grab active:cursor-grabbing">
-                    <Image 
-                      src={img} 
+                  <div class="min-w-full h-full flex-shrink-0 snap-center relative cursor-zoom-in select-none" data-slide>
+                    <Image
+                      src={img}
                       alt={`${vehicle.name} - ${vehicle.unit} - Imagem ${i + 1}`}
-                      class="absolute inset-0 w-full h-full object-cover"
+                      class="absolute inset-0 w-full h-full object-cover pointer-events-none"
+                      style={`object-position: ${vehicle.imagePosition}`}
                       quality="high"
                     />
-                    <!-- Gradient overlay for text readability -->
                     <div class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/20 to-transparent pointer-events-none"></div>
                   </div>
                 ))}
               </div>
 
-              <!-- Indicators (Visual only) -->
-              <div class="absolute bottom-4 right-4 flex gap-1.5 z-10 pointer-events-none">
+              <!-- Prev arrow -->
+              <button
+                data-prev
+                class="carousel-arrow absolute left-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 bg-black/50 backdrop-blur-sm text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-black/70 focus:outline-none"
+                aria-label="Foto anterior"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+              </button>
+
+              <!-- Next arrow -->
+              <button
+                data-next
+                class="carousel-arrow absolute right-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 bg-black/50 backdrop-blur-sm text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-black/70 focus:outline-none"
+                aria-label="Próxima foto"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+
+              <!-- Dot indicators -->
+              <div class="absolute bottom-4 right-4 flex gap-1.5 z-10">
                 {vehicle.images.map((_, i) => (
-                  <div class="w-1.5 h-1.5 rounded-full bg-white/50 backdrop-blur-sm"></div>
+                  <button
+                    data-dot
+                    class="w-2 h-2 rounded-full transition-all duration-200 focus:outline-none bg-white/40 hover:bg-white/70"
+                    aria-label={`Foto ${i + 1}`}
+                  ></button>
                 ))}
               </div>
 
-              <!-- Unit Badge -->
+              <!-- Unit badge -->
               <div class="absolute top-4 right-4 bg-accent text-white font-bold text-xs px-3 py-1.5 rounded-sm uppercase tracking-wider z-10 shadow-sm pointer-events-none">
                 {vehicle.unit}
               </div>
+
+              <!-- Name overlay -->
               <div class="absolute bottom-4 left-4 z-10 pointer-events-none">
                 <span class="text-white font-bold text-xl drop-shadow-md">{vehicle.name}</span>
                 <span class="block text-silver-300 text-sm drop-shadow-md">{vehicle.type}</span>
-              </div>
-
-              <!-- Swipe instruction hint -->
-              <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-navy-900/60 backdrop-blur-md text-white px-4 py-2 rounded-full text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex items-center gap-2 shadow-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="11 17 6 12 11 7"></polyline><polyline points="18 17 13 12 18 7"></polyline></svg>
-                Deslize para ver
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 17 18 12 13 7"></polyline><polyline points="6 17 11 12 6 7"></polyline></svg>
               </div>
             </div>
 
             <!-- Info area -->
             <div class="p-6">
-              <p class="text-gray-500 text-sm leading-relaxed mb-4">
-                {vehicle.description}
-              </p>
-
+              <p class="text-gray-500 text-sm leading-relaxed mb-4">{vehicle.description}</p>
               <div class="space-y-3">
                 <div class="bg-white border border-silver-200 rounded-sm p-3">
                   <span class="text-[10px] font-medium text-silver-400 uppercase tracking-widest block">Especificação</span>
@@ -127,17 +145,132 @@ const vehicles = [
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       ))}
     </div>
-
-
   </div>
 </section>
 
+<!-- Lightbox -->
+<div
+  id="fleet-lightbox"
+  class="hidden fixed inset-0 z-[9999] bg-black/92 flex items-center justify-center p-4"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Visualizar foto"
+>
+  <button
+    id="fleet-lightbox-close"
+    class="absolute top-4 right-4 w-10 h-10 text-white/60 hover:text-white transition-colors flex items-center justify-center rounded-full hover:bg-white/10"
+    aria-label="Fechar (ESC)"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <img id="fleet-lightbox-img" class="max-w-full max-h-[90vh] object-contain rounded shadow-2xl cursor-default" alt="" />
+  <p class="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/40 text-xs">Clique fora ou pressione ESC para fechar</p>
+</div>
+
 <style>
-  .hide-scrollbar::-webkit-scrollbar {
-    display: none;
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
+
+  /* Arrow oculta quando está na borda, mesmo com group-hover */
+  [data-prev].is-first,
+  [data-next].is-last {
+    opacity: 0 !important;
+    pointer-events: none;
+  }
+
+  /* Dot ativo */
+  [data-dot].is-active {
+    background-color: white;
+    transform: scale(1.3);
   }
 </style>
+
+<script>
+  // ── Lightbox ──────────────────────────────────────────────────────────────
+  const lightbox = document.getElementById('fleet-lightbox') as HTMLElement;
+  const lightboxImg = document.getElementById('fleet-lightbox-img') as HTMLImageElement;
+  const lightboxClose = document.getElementById('fleet-lightbox-close');
+
+  function openLightbox(src: string, alt: string) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt;
+    lightbox.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.add('hidden');
+    document.body.style.overflow = '';
+    lightboxImg.src = '';
+  }
+
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+  lightboxClose?.addEventListener('click', closeLightbox);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+  // ── Carousels ─────────────────────────────────────────────────────────────
+  document.querySelectorAll<HTMLElement>('[data-carousel]').forEach((carousel) => {
+    const scrollEl = carousel.querySelector<HTMLElement>('[data-scroll]')!;
+    const slides   = Array.from(carousel.querySelectorAll<HTMLElement>('[data-slide]'));
+    const dots     = Array.from(carousel.querySelectorAll<HTMLButtonElement>('[data-dot]'));
+    const prevBtn  = carousel.querySelector<HTMLButtonElement>('[data-prev]');
+    const nextBtn  = carousel.querySelector<HTMLButtonElement>('[data-next]');
+    const total    = slides.length;
+    let current    = 0;
+
+    function updateUI() {
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('is-active', i === current);
+      });
+      prevBtn?.classList.toggle('is-first', current === 0);
+      nextBtn?.classList.toggle('is-last', current === total - 1);
+    }
+
+    function goTo(index: number) {
+      current = Math.max(0, Math.min(index, total - 1));
+      scrollEl.scrollTo({ left: current * scrollEl.clientWidth, behavior: 'smooth' });
+      updateUI();
+    }
+
+    // Botões de seta
+    prevBtn?.addEventListener('click', (e) => { e.stopPropagation(); goTo(current - 1); });
+    nextBtn?.addEventListener('click', (e) => { e.stopPropagation(); goTo(current + 1); });
+
+    // Dots clicáveis
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', (e) => { e.stopPropagation(); goTo(i); });
+    });
+
+    // Scroll do mouse → avança/volta foto
+    scrollEl.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+      if (delta > 30)       goTo(current + 1);
+      else if (delta < -30) goTo(current - 1);
+    }, { passive: false });
+
+    // Sincroniza dots/arrows após swipe por toque
+    let scrollTimer: ReturnType<typeof setTimeout>;
+    scrollEl.addEventListener('scroll', () => {
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(() => {
+        const index = Math.round(scrollEl.scrollLeft / scrollEl.clientWidth);
+        if (index !== current) { current = index; updateUI(); }
+      }, 80);
+    });
+
+    // Clique na foto → abre lightbox
+    slides.forEach((slide) => {
+      slide.addEventListener('click', () => {
+        const img = slide.querySelector('img');
+        if (img) openLightbox(img.src, img.alt);
+      });
+    });
+
+    updateUI();
+  });
+</script>
