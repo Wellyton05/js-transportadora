@@ -1,5 +1,5 @@
 ---
-// FleetSection.astro — Frota: 2 Ducatos
+// FleetSection.astro — Frota: 2 Ducatos + 1 Fiorino
 import { Image } from 'astro:assets';
 import ducato1Front from '../assets/ducato-1.jpeg';
 import ducato1Rear from '../assets/ducato-1-traseira.jpeg';
@@ -9,18 +9,36 @@ import ducato2Front from '../assets/ducato-2.jpeg';
 import ducato2Rear from '../assets/ducato-2-traseira.jpeg';
 import ducato2Box from '../assets/ducato-2-bau.jpeg';
 
+import fiorino1 from '../assets/fiorino-1.jpeg';
+import fiorino2 from '../assets/fiorino-2.jpeg';
+
 const vehicles = [
   {
     name: 'Fiat Ducato',
     unit: 'Veículo 01',
-    spec: 'DUCATO MÁXI LONG 2.3 T.ALTO ME DISEL - 3 PALLETS',
+    type: 'Van de Carga',
+    spec: 'DUCATO MÁXI LONG 2.3 T.ALTO DIESEL - 3 PALLETS',
+    capacity: 'Carga máxima: 1.5 toneladas',
+    description: 'Veículo ideal para entregas ágeis, oferecendo versatilidade para rotas urbanas e regionais com máxima segurança para sua carga.',
     images: [ducato1Front, ducato1Rear, ducato1Box],
   },
   {
     name: 'Fiat Ducato',
     unit: 'Veículo 02',
-    spec: 'DUCATO MÁXI LONG 2.3 T.ALTO ME DISEL - 3 PALLETS',
+    type: 'Van de Carga',
+    spec: 'DUCATO MÁXI LONG 2.3 T.ALTO DIESEL - 3 PALLETS',
+    capacity: 'Carga máxima: 1.5 toneladas',
+    description: 'Veículo ideal para entregas ágeis, oferecendo versatilidade para rotas urbanas e regionais com máxima segurança para sua carga.',
     images: [ducato2Front, ducato2Rear, ducato2Box],
+  },
+  {
+    name: 'Fiat Fiorino',
+    unit: 'Veículo 03',
+    type: 'Furgão Compacto',
+    spec: 'FIORINO FURGÃO 1.4 EVO FLEX 8V - CARGA URBANA',
+    capacity: 'Carga máxima: 680 kg',
+    description: 'Ideal para entregas urbanas rápidas e locais de difícil acesso, com agilidade, economia e praticidade no dia a dia.',
+    images: [fiorino1, fiorino2],
   },
 ];
 ---
@@ -41,12 +59,12 @@ const vehicles = [
         <span class="text-accent">na medida certa</span>
       </h2>
       <p class="section-subtitle">
-        Nossa frota de Ducatos é ideal para entregas ágeis com a segurança que sua carga merece.
+        Nossa frota de Ducatos e Fiorino é ideal para entregas ágeis com a segurança que sua carga merece.
       </p>
     </div>
 
-    <!-- Fleet Grid — 2 Ducatos -->
-    <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+    <!-- Fleet Grid — 2 Ducatos + 1 Fiorino -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       {vehicles.map((vehicle, index) => (
         <div class={`reveal delay-${(index + 1) * 200}`}>
           <div class="bg-silver-50 border border-silver-200 rounded-sm overflow-hidden hover:border-accent/40 transition-all duration-500 group">
@@ -81,7 +99,7 @@ const vehicles = [
               </div>
               <div class="absolute bottom-4 left-4 z-10 pointer-events-none">
                 <span class="text-white font-bold text-xl drop-shadow-md">{vehicle.name}</span>
-                <span class="block text-silver-300 text-sm drop-shadow-md">Van de Carga</span>
+                <span class="block text-silver-300 text-sm drop-shadow-md">{vehicle.type}</span>
               </div>
 
               <!-- Swipe instruction hint -->
@@ -95,9 +113,9 @@ const vehicles = [
             <!-- Info area -->
             <div class="p-6">
               <p class="text-gray-500 text-sm leading-relaxed mb-4">
-                Veículo ideal para entregas ágeis, oferecendo versatilidade para rotas urbanas e regionais com máxima segurança para sua carga.
+                {vehicle.description}
               </p>
-              
+
               <div class="space-y-3">
                 <div class="bg-white border border-silver-200 rounded-sm p-3">
                   <span class="text-[10px] font-medium text-silver-400 uppercase tracking-widest block">Especificação</span>
@@ -105,7 +123,7 @@ const vehicles = [
                 </div>
                 <div class="bg-white border border-silver-200 rounded-sm p-3">
                   <span class="text-[10px] font-medium text-silver-400 uppercase tracking-widest block">Capacidade</span>
-                  <span class="text-accent font-bold text-sm">Carga máxima: 1.5 toneladas</span>
+                  <span class="text-accent font-bold text-sm">{vehicle.capacity}</span>
                 </div>
               </div>
             </div>
