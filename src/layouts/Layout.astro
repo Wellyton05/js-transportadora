@@ -7,8 +7,8 @@ interface Props {
 }
 
 const {
-  title = 'J.S Transportadora | Transporte de Cargas em Itajaí-SC',
-  description = 'J.S Transportadora: transporte de cargas fracionadas, fechadas e urgentes em Itajaí, Balneário Camboriú e Navegantes. Segurança, agilidade e rastreio em tempo real. Solicite seu orçamento!',
+  title = 'Transportadora em Itajaí | J.S Transportadora — Cargas com Segurança e Agilidade',
+  description = 'Transportadora em Itajaí, SC. A J.S Transportadora oferece transporte de cargas dedicadas e complementos para Balneário Camboriú, Navegantes e todo o Brasil. Solicite seu orçamento via WhatsApp!',
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -27,7 +27,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <title>{title}</title>
     <meta name="title" content={title} />
     <meta name="description" content={description} />
-    <meta name="keywords" content="transportadora itajaí, transporte de cargas, carga fracionada, carga fechada, transporte urgente, Balneário Camboriú, Navegantes, frete Santa Catarina, rastreio de carga" />
+    <meta name="keywords" content="transportadora em itajaí, transportadora itajaí, transporte de cargas itajaí, carga dedicada, carga fechada, complementos, Balneário Camboriú, Navegantes, frete Santa Catarina, rastreio de carga" />
     <meta name="author" content="J.S Transportadora" />
     <meta name="robots" content="index, follow" />
     <meta name="language" content="pt-BR" />
@@ -66,10 +66,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       "telephone": ["+5547988602569", "+5547997848201"],
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Rua Hercílio Luz, 1200 - Sala 03",
+        "streetAddress": "Rua Odilio Garcia, 520",
         "addressLocality": "Itajaí",
         "addressRegion": "SC",
-        "postalCode": "88301-000",
+        "postalCode": "88307-400",
         "addressCountry": "BR"
       },
       "geo": {
@@ -82,7 +82,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         { "@type": "City", "name": "Balneário Camboriú" },
         { "@type": "City", "name": "Navegantes" }
       ],
-      "serviceType": ["Transporte de Carga Fracionada", "Transporte de Carga Fechada", "Transporte Urgente"],
+      "serviceType": ["Carga Dedicada / Fechada", "Complementos"],
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],

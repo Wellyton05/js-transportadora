@@ -32,14 +32,11 @@
 
   /* Typography */
   --font-sans: 'Inter', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
 
   /* Animations */
   --animate-fade-in: fadeIn 0.8s ease-out forwards;
   --animate-slide-up: slideUp 0.8s ease-out forwards;
-  --animate-slide-right: slideRight 0.8s ease-out forwards;
   --animate-pulse-slow: pulse 3s ease-in-out infinite;
-  --animate-float: float 3s ease-in-out infinite;
 
   @keyframes fadeIn {
     0% { opacity: 0; }
@@ -49,16 +46,6 @@
   @keyframes slideUp {
     0% { opacity: 0; transform: translateY(40px); }
     100% { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes slideRight {
-    0% { opacity: 0; transform: translateX(-40px); }
-    100% { opacity: 1; transform: translateX(0); }
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
   }
 }
 
@@ -82,33 +69,6 @@ body {
 /* ========================================
    Component Styles
    ======================================== */
-
-/* === Diagonal Section Dividers === */
-.diagonal-top {
-  clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
-}
-
-.diagonal-top-sm {
-  clip-path: polygon(0 4%, 100% 0, 100% 100%, 0 100%);
-}
-
-.diagonal-bottom {
-  clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
-}
-
-.diagonal-both {
-  clip-path: polygon(0 6%, 100% 0, 100% 94%, 0 100%);
-}
-
-/* === Decorative Silver Lines === */
-.line-accent {
-  @apply relative;
-}
-
-.line-accent::before {
-  content: '';
-  @apply absolute top-0 left-0 w-16 h-[2px] bg-accent;
-}
 
 /* === Background Patterns === */
 .bg-diagonal-lines {
@@ -176,19 +136,6 @@ body {
 
 .btn-secondary:hover {
   @apply bg-white text-navy;
-}
-
-.btn-whatsapp {
-  @apply inline-flex items-center gap-2 px-6 py-3 font-semibold
-         rounded-sm text-sm uppercase tracking-wider
-         transition-all duration-300 cursor-pointer;
-  background-color: #25D366;
-  color: white;
-}
-
-.btn-whatsapp:hover {
-  background-color: #20BD5A;
-  @apply shadow-lg -translate-y-0.5;
 }
 
 .btn-track {
