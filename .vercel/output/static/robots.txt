@@ -1,5 +1,0 @@
-# robots.txt — J.S Transportadora
-User-agent: *
-Allow: /
-
-Sitemap: https://jstransportadora.com.br/sitemap-index.xml

@@ -7,7 +7,7 @@ import vercel from '@astrojs/vercel';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://jstransportadora.com.br',
-  output: 'static',
+  output: 'server',
   adapter: vercel(),
   integrations: [
     sitemap(),
